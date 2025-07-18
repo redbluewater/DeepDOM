@@ -1,0 +1,2092 @@
+{
+  "name": "biosscope-bcodmo-datasets",
+  "title": "Dissolved Organic Matter Composition in the Deep Atlantic Ocean",
+  "description": "DeepDOM datasets from BCO-DMO",
+  "profile": "data-package",
+  "sources": [
+    {
+      "path": "http://lod.bco-dmo.org/id/dataset/4008",
+      "title": "Scientific sampling event log from R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados in 2013 (Deep Atlantic DOM project)",
+      "doi": "10.1575/1912/bco-dmo.4008.1"
+    },
+    {
+      "path": "http://lod.bco-dmo.org/id/dataset/473296",
+      "title": "Inorganic and organic nutrient data from Niskin bottles from R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados in 2013 (Deep Atlantic DOM project)",
+      "doi": "10.1575/1912/bco-dmo.473296.1"
+    },
+    {
+      "path": "http://lod.bco-dmo.org/id/dataset/481164",
+      "title": "Processed CTD data from all sensors mounted on the rosette from R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados in 2013 (Deep Atlantic DOM project)",
+      "doi": "10.1575/1912/bco-dmo.481164.1"
+    },
+    {
+      "path": "http://lod.bco-dmo.org/id/dataset/528510",
+      "title": "Viral and bacterial counts from filtered water, stained with SYBR Green and counted using epifluorescent microscopy, from samples collected on R/V Knorr cruise KN210-04 in the Western Atlantic Ocean in 2013 (Deep Atlantic DOM project)",
+      "doi": "10.26008/1912/bco-dmo.528510.1"
+    },
+    {
+      "path": "http://lod.bco-dmo.org/id/dataset/700024",
+      "title": "Targeted dissolved metabolite abundances from R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados from March to May 2013 (Deep Atlantic DOM project)",
+      "doi": null
+    },
+    {
+      "path": "http://lod.bco-dmo.org/id/dataset/700038",
+      "title": "Targeted particulate metabolite abundances from R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados from March to May 2013 (Deep Atlantic DOM project)",
+      "doi": null
+    },
+    {
+      "path": "http://lod.bco-dmo.org/id/dataset/745536",
+      "title": "Total organic sulfur (TOS) collected from Niskin bottle samples on R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados from March to May 2013 (Deep Atlantic DOM project)",
+      "doi": "10.1575/1912/bco-dmo.745536.1"
+    },
+    {
+      "path": "http://lod.bco-dmo.org/id/dataset/875622",
+      "title": "Sample information for metaproteomic samples taken from Station 2 from R/V Knorr KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados from March 2013",
+      "doi": null
+    }
+  ],
+  "created": "2025-07-18T23:10:49.934221Z",
+  "resources": [
+    {
+      "name": "event_log",
+      "type": "table",
+      "sources": [
+        {
+          "path": "http://lod.bco-dmo.org/id/dataset/4008",
+          "title": "Scientific sampling event log from R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados in 2013 (Deep Atlantic DOM project)",
+          "doi": "10.1575/1912/bco-dmo.4008.1"
+        }
+      ],
+      "path": "https://datadocs.bco-dmo.org/file/3YY3qMjTpR1EVL/event_log.csv",
+      "scheme": "https",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "hash": "sha256:527a02054c9b67362046f2075b755971595ed9e14a147f7f8f522d47b6b5a37c",
+      "bytes": 259721,
+      "fields": 12,
+      "rows": 1841,
+      "schema": {
+        "fields": [
+          {
+            "name": "event",
+            "type": "string"
+          },
+          {
+            "name": "date_utc",
+            "type": "integer"
+          },
+          {
+            "name": "time_utc",
+            "type": "integer"
+          },
+          {
+            "name": "instrument",
+            "type": "string"
+          },
+          {
+            "name": "action",
+            "type": "string"
+          },
+          {
+            "name": "station",
+            "type": "string"
+          },
+          {
+            "name": "cast",
+            "type": "string"
+          },
+          {
+            "name": "lat",
+            "type": "number"
+          },
+          {
+            "name": "lon",
+            "type": "number"
+          },
+          {
+            "name": "seafloor",
+            "type": "string"
+          },
+          {
+            "name": "author",
+            "type": "string"
+          },
+          {
+            "name": "comment",
+            "type": "string"
+          }
+        ]
+      },
+      "bcodmo:parameters": [
+        {
+          "bcodmo:name": "event",
+          "bcodmo:description": "Unique ID number for the event; date-time string does NOT necessarily equal the date-time that the event actually occurred. Value serves a unique identifier only.",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "date_utc",
+          "bcodmo:description": "<p>Date (UTC) when the event occurred. Created from original dateTimeUTC field in&nbsp;YYYYmmdd format.</p>",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "time_utc",
+          "bcodmo:description": "Time (UTC) when the event occurred; in hours and minutes (0000 to 2359). Created from original dateTimeUTC field.",
+          "bcodmo:units": "HHMM"
+        },
+        {
+          "bcodmo:name": "instrument",
+          "bcodmo:description": "Name of instrument.",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "action",
+          "bcodmo:description": "Activity performed with the instrument.",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "station",
+          "bcodmo:description": "Identification number of the sampling station.",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "cast",
+          "bcodmo:description": "Consecutive cast number for the instrument.",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "lat",
+          "bcodmo:description": "Latitude in decimal degrees at the time the event occurred. North = positive.",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "lon",
+          "bcodmo:description": "Longitude in decimal degrees at the time the event occurred. East = positive.",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "seafloor",
+          "bcodmo:description": "<p>Depth of the water.</p>",
+          "bcodmo:units": "meters"
+        },
+        {
+          "bcodmo:name": "author",
+          "bcodmo:description": "<p>Name of person that recorded the event.</p>",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "comment",
+          "bcodmo:description": "<p>Comment entered about the sampling event; free-text.</p>",
+          "bcodmo:units": "dimensionless"
+        }
+      ]
+    },
+    {
+      "name": "nutrients",
+      "type": "table",
+      "sources": [
+        {
+          "path": "http://lod.bco-dmo.org/id/dataset/473296",
+          "title": "Inorganic and organic nutrient data from Niskin bottles from R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados in 2013 (Deep Atlantic DOM project)",
+          "doi": "10.1575/1912/bco-dmo.473296.1"
+        }
+      ],
+      "path": "https://datadocs.bco-dmo.org/file/WWW1EMYcyGpEYx/nutrients.csv",
+      "scheme": "https",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "hash": "sha256:218e14b8dd49d9471c1713bd98d3480d82887be7aa40306842a14db0e1f5e214",
+      "bytes": 29630,
+      "fields": 18,
+      "rows": 199,
+      "schema": {
+        "fields": [
+          {
+            "name": "cast",
+            "type": "integer"
+          },
+          {
+            "name": "station",
+            "type": "integer"
+          },
+          {
+            "name": "date_start_utc",
+            "type": "integer"
+          },
+          {
+            "name": "time_start_utc",
+            "type": "integer"
+          },
+          {
+            "name": "event_start",
+            "type": "string"
+          },
+          {
+            "name": "lat_start",
+            "type": "number"
+          },
+          {
+            "name": "lon_start",
+            "type": "number"
+          },
+          {
+            "name": "niskin",
+            "type": "integer"
+          },
+          {
+            "name": "depth",
+            "type": "number"
+          },
+          {
+            "name": "press",
+            "type": "number"
+          },
+          {
+            "name": "bots",
+            "type": "integer"
+          },
+          {
+            "name": "PO4",
+            "type": "number"
+          },
+          {
+            "name": "NO3_NO2",
+            "type": "number"
+          },
+          {
+            "name": "silicate",
+            "type": "number"
+          },
+          {
+            "name": "NO2",
+            "type": "number"
+          },
+          {
+            "name": "NH4",
+            "type": "number"
+          },
+          {
+            "name": "NPOC",
+            "type": "string"
+          },
+          {
+            "name": "TN",
+            "type": "string"
+          }
+        ]
+      },
+      "bcodmo:parameters": [
+        {
+          "bcodmo:name": "cast",
+          "bcodmo:description": "<p>Consecutive cast number for the instrument.</p>",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "station",
+          "bcodmo:description": "<p>Identification number of the sampling station.</p>",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "date_start_utc",
+          "bcodmo:description": "<p>Date (UTC) given as 4-digit year -- 2-digit month -- 2-digit day in&nbsp;YYYYmmdd format.</p>",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "time_start_utc",
+          "bcodmo:description": "<p>Time (UTC) given as hour -- minute.</p>",
+          "bcodmo:units": "HHMM"
+        },
+        {
+          "bcodmo:name": "event_start",
+          "bcodmo:description": "<p>The event number from the ELOG maintained during the cruise.</p>",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "lat_start",
+          "bcodmo:description": "<p>Latitude at the time the event started (from the cruise event log).</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "lon_start",
+          "bcodmo:description": "<p>Longitude at the time the event started (from the cruise event log).</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "niskin",
+          "bcodmo:description": "<p>Niskin bottle number.</p>",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "depth",
+          "bcodmo:description": "<p>Depth.</p>",
+          "bcodmo:units": "meters (m)"
+        },
+        {
+          "bcodmo:name": "press",
+          "bcodmo:description": "Pressure.",
+          "bcodmo:units": "decibars (db)"
+        },
+        {
+          "bcodmo:name": "bots",
+          "bcodmo:description": "<p>The full range of Niskin bottles used for the sample collection. For this particular dataset this is equal to the Niskin number.</p>",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "PO4",
+          "bcodmo:description": "Phosphate.",
+          "bcodmo:units": "micromoles per liter (umol/L)"
+        },
+        {
+          "bcodmo:name": "NO3_NO2",
+          "bcodmo:description": "Nitrate + nitrite.",
+          "bcodmo:units": "micromoles per liter (umol/L)"
+        },
+        {
+          "bcodmo:name": "silicate",
+          "bcodmo:description": "Silicate.",
+          "bcodmo:units": "micromoles per liter (umol/L)"
+        },
+        {
+          "bcodmo:name": "NO2",
+          "bcodmo:description": "Nitrite.",
+          "bcodmo:units": "micromoles per liter (umol/L)"
+        },
+        {
+          "bcodmo:name": "NH4",
+          "bcodmo:description": "Ammonium.",
+          "bcodmo:units": "micromoles per liter (umol/L)"
+        },
+        {
+          "bcodmo:name": "NPOC",
+          "bcodmo:description": "Non-purgeable organic carbon.",
+          "bcodmo:units": "micromolar (uM)"
+        },
+        {
+          "bcodmo:name": "TN",
+          "bcodmo:description": "Total nitrogen.",
+          "bcodmo:units": "micromolar (uM)"
+        }
+      ]
+    },
+    {
+      "name": "ctd",
+      "type": "table",
+      "sources": [
+        {
+          "path": "http://lod.bco-dmo.org/id/dataset/481164",
+          "title": "Processed CTD data from all sensors mounted on the rosette from R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados in 2013 (Deep Atlantic DOM project)",
+          "doi": "10.1575/1912/bco-dmo.481164.1"
+        }
+      ],
+      "path": "https://datadocs.bco-dmo.org/file/3YY3qZRcBEVNj/CTD.csv",
+      "scheme": "https",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "hash": "sha256:d4668744150ad52fe512502f800246e8e6d9e16738f38f5f6084cc2ffeaceba0",
+      "bytes": 27839037,
+      "fields": 25,
+      "rows": 144828,
+      "schema": {
+        "fields": [
+          {
+            "name": "cast",
+            "type": "integer"
+          },
+          {
+            "name": "station",
+            "type": "integer"
+          },
+          {
+            "name": "date_start_utc",
+            "type": "integer"
+          },
+          {
+            "name": "time_start_utc",
+            "type": "integer"
+          },
+          {
+            "name": "event_start",
+            "type": "string"
+          },
+          {
+            "name": "lat_start",
+            "type": "number"
+          },
+          {
+            "name": "lon_start",
+            "type": "number"
+          },
+          {
+            "name": "depth",
+            "type": "integer"
+          },
+          {
+            "name": "press",
+            "type": "number"
+          },
+          {
+            "name": "temp",
+            "type": "number"
+          },
+          {
+            "name": "temp2",
+            "type": "number"
+          },
+          {
+            "name": "sal",
+            "type": "number"
+          },
+          {
+            "name": "sal2",
+            "type": "number"
+          },
+          {
+            "name": "O2_mL_L",
+            "type": "number"
+          },
+          {
+            "name": "density",
+            "type": "number"
+          },
+          {
+            "name": "density2",
+            "type": "number"
+          },
+          {
+            "name": "latitude",
+            "type": "string"
+          },
+          {
+            "name": "longitude",
+            "type": "string"
+          },
+          {
+            "name": "fluor",
+            "type": "string"
+          },
+          {
+            "name": "trans",
+            "type": "string"
+          },
+          {
+            "name": "turbidity",
+            "type": "string"
+          },
+          {
+            "name": "par",
+            "type": "number"
+          },
+          {
+            "name": "spar",
+            "type": "number"
+          },
+          {
+            "name": "sound_vel",
+            "type": "number"
+          },
+          {
+            "name": "flag",
+            "type": "integer"
+          }
+        ]
+      },
+      "bcodmo:parameters": [
+        {
+          "bcodmo:name": "cast",
+          "bcodmo:description": "<p>Consecutive cast number for the instrument.</p>",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "station",
+          "bcodmo:description": "<p>Identification number of the sampling station.</p>",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "date_start_utc",
+          "bcodmo:description": "<p>Date (UTC) given as 4-digit year -- 2-digit month -- 2-digit day in&nbsp;YYYYmmdd format.</p>",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "time_start_utc",
+          "bcodmo:description": "<p>Time (UTC) given as hour -- minute.</p>",
+          "bcodmo:units": "HHMM"
+        },
+        {
+          "bcodmo:name": "event_start",
+          "bcodmo:description": "<p>The event number from the ELOG maintained during the cruise.</p>",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "lat_start",
+          "bcodmo:description": "<p>Latitude at the time the event started (from the cruise event log).</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "lon_start",
+          "bcodmo:description": "<p>Longitude at the time the event started (from the cruise event log).</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "depth",
+          "bcodmo:description": "<p>Depth. (Orignally called 'depSM'.)</p>",
+          "bcodmo:units": "meters"
+        },
+        {
+          "bcodmo:name": "press",
+          "bcodmo:description": "<p>Pressure. (Originally called 'prDM'.)</p>",
+          "bcodmo:units": "decibars (db)"
+        },
+        {
+          "bcodmo:name": "temp",
+          "bcodmo:description": "Temperature from primary sensor on CTD. (Originally called 't090C'.)",
+          "bcodmo:units": "degrees Celsius (ITS-90)"
+        },
+        {
+          "bcodmo:name": "temp2",
+          "bcodmo:description": "Temperature from secondary sensor on CTD. (Originally called 't190C'.).",
+          "bcodmo:units": "degrees Celsius (ITS-90)"
+        },
+        {
+          "bcodmo:name": "sal",
+          "bcodmo:description": "Salinity from primary sensor on CTD. (Originally called 'sal00'.)",
+          "bcodmo:units": "Practical Salinity Units (PSU)"
+        },
+        {
+          "bcodmo:name": "sal2",
+          "bcodmo:description": "Salinity from secondary sensor on CTD. (Originally called 'sal11'.)",
+          "bcodmo:units": "Practical Salinity Units (PSU)"
+        },
+        {
+          "bcodmo:name": "O2_mL_L",
+          "bcodmo:description": "Oxygen from SBE43.",
+          "bcodmo:units": "milliliters per liter (mL/L)"
+        },
+        {
+          "bcodmo:name": "density",
+          "bcodmo:description": "Density from primary sensor on CTD. (Originally called 'density00'.)",
+          "bcodmo:units": "kilograms per cubic meter (kg/m^3)"
+        },
+        {
+          "bcodmo:name": "density2",
+          "bcodmo:description": "Density from secondary sensor on CTD. (Originally called 'density11'.)",
+          "bcodmo:units": "kilograms per cubic meter (kg/m^3)"
+        },
+        {
+          "bcodmo:name": "latitude",
+          "bcodmo:description": "<p>Latitude.</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "longitude",
+          "bcodmo:description": "<p>Longitude.</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "fluor",
+          "bcodmo:description": "Fluorescence from WET Labs ECO-AFL/FL. (Originally called 'flECO_AFL'.)",
+          "bcodmo:units": "milligrams per cubic meter (mg/m^3)"
+        },
+        {
+          "bcodmo:name": "trans",
+          "bcodmo:description": "Beam transmission from WET Labs C-Star. (Originally called 'CStarTr0'.)",
+          "bcodmo:units": "percent (%)"
+        },
+        {
+          "bcodmo:name": "turbidity",
+          "bcodmo:description": "Turbidity from WET Labs ECO. (Originally called 'tubWETntu0'.)",
+          "bcodmo:units": "Nephelometric Turbidity Units (NTU)"
+        },
+        {
+          "bcodmo:name": "par",
+          "bcodmo:description": "<p>PAR / irradiance from Biospherical/Licor.</p>",
+          "bcodmo:units": "microEinsteins per square meter per second (μE/m2-sec)"
+        },
+        {
+          "bcodmo:name": "spar",
+          "bcodmo:description": "<p>SPAR / surface irradiance.</p>",
+          "bcodmo:units": "microEinsteins per square meter per second (μE/m2-sec)"
+        },
+        {
+          "bcodmo:name": "sound_vel",
+          "bcodmo:description": "Sound velociy. (Originally called 'svCM1'.)",
+          "bcodmo:units": "meters per second (m/s) (Chen-Millero)"
+        },
+        {
+          "bcodmo:name": "flag",
+          "bcodmo:description": "<p>Data quality flag.</p>",
+          "bcodmo:units": "dimensionless"
+        }
+      ]
+    },
+    {
+      "name": "viral_bact_counts",
+      "type": "table",
+      "sources": [
+        {
+          "path": "http://lod.bco-dmo.org/id/dataset/528510",
+          "title": "Viral and bacterial counts from filtered water, stained with SYBR Green and counted using epifluorescent microscopy, from samples collected on R/V Knorr cruise KN210-04 in the Western Atlantic Ocean in 2013 (Deep Atlantic DOM project)",
+          "doi": "10.26008/1912/bco-dmo.528510.1"
+        }
+      ],
+      "path": "https://datadocs.bco-dmo.org/file/yppz4qDsqylRl/viral_bact_counts.csv",
+      "scheme": "https",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "hash": "sha256:4927e069e126a19be9ca905a0c08e098aa665a83f357055394488f29bd1a0aeb",
+      "bytes": 168293,
+      "fields": 16,
+      "rows": 1740,
+      "schema": {
+        "fields": [
+          {
+            "name": "cast",
+            "type": "integer"
+          },
+          {
+            "name": "station",
+            "type": "integer"
+          },
+          {
+            "name": "date_start_utc",
+            "type": "integer"
+          },
+          {
+            "name": "time_start_utc",
+            "type": "integer"
+          },
+          {
+            "name": "event_start",
+            "type": "string"
+          },
+          {
+            "name": "lat_start",
+            "type": "number"
+          },
+          {
+            "name": "lon_start",
+            "type": "number"
+          },
+          {
+            "name": "niskin",
+            "type": "integer"
+          },
+          {
+            "name": "depth",
+            "type": "number"
+          },
+          {
+            "name": "press",
+            "type": "number"
+          },
+          {
+            "name": "lab_sticker",
+            "type": "string"
+          },
+          {
+            "name": "vir_abund",
+            "type": "string"
+          },
+          {
+            "name": "vir_abund_SE",
+            "type": "string"
+          },
+          {
+            "name": "bact_abund",
+            "type": "string"
+          },
+          {
+            "name": "bact_abund_SE",
+            "type": "string"
+          },
+          {
+            "name": "VBR",
+            "type": "string"
+          }
+        ]
+      },
+      "bcodmo:parameters": [
+        {
+          "bcodmo:name": "cast",
+          "bcodmo:description": "<p>Consecutive cast number for the instrument.</p>",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "station",
+          "bcodmo:description": "Identification number of the sampling station.",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "date_start_utc",
+          "bcodmo:description": "Date (UTC) given as 4-digit year - 2-digit month - 2-digit day.",
+          "bcodmo:units": "YYYYmmdd"
+        },
+        {
+          "bcodmo:name": "time_start_utc",
+          "bcodmo:description": "Time (UTC) given as hour - minute.",
+          "bcodmo:units": "HHMM"
+        },
+        {
+          "bcodmo:name": "event_start",
+          "bcodmo:description": "The event number from the ELOG maintained during the cruise.",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "lat_start",
+          "bcodmo:description": "<p>Latitude at the time the event started (from the cruise event log).</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "lon_start",
+          "bcodmo:description": "<p>Longitude at the time the event started (from the cruise event log).</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "niskin",
+          "bcodmo:description": "Niskin bottle number.",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "depth",
+          "bcodmo:description": "<p>Depth.</p>",
+          "bcodmo:units": "meters (m)"
+        },
+        {
+          "bcodmo:name": "press",
+          "bcodmo:description": "<p>Pressure.</p>",
+          "bcodmo:units": "decibars (db)"
+        },
+        {
+          "bcodmo:name": "lab_sticker",
+          "bcodmo:description": "Lab identification number.",
+          "bcodmo:units": "dimensionless"
+        },
+        {
+          "bcodmo:name": "vir_abund",
+          "bcodmo:description": "Viral abundance.",
+          "bcodmo:units": "viral abundance per milliliter (per mL)"
+        },
+        {
+          "bcodmo:name": "vir_abund_SE",
+          "bcodmo:description": "Standard error associated with viral abundance.",
+          "bcodmo:units": "viral abundance per milliliter (per mL)"
+        },
+        {
+          "bcodmo:name": "bact_abund",
+          "bcodmo:description": "Bacterial abundance.",
+          "bcodmo:units": "bacterial abundance per milliliter (per mL)"
+        },
+        {
+          "bcodmo:name": "bact_abund_SE",
+          "bcodmo:description": "Standard error associated with bacterial abundance.",
+          "bcodmo:units": "bacterial abundance per milliliter (per mL)"
+        },
+        {
+          "bcodmo:name": "VBR",
+          "bcodmo:description": "<p>Virus to bacteria ratio (virus:bacteria).</p>",
+          "bcodmo:units": "dimensionless"
+        }
+      ]
+    },
+    {
+      "name": "metabolites_dissolved",
+      "type": "table",
+      "sources": [
+        {
+          "path": "http://lod.bco-dmo.org/id/dataset/700024",
+          "title": "Targeted dissolved metabolite abundances from R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados from March to May 2013 (Deep Atlantic DOM project)",
+          "doi": null
+        }
+      ],
+      "path": "https://datadocs.bco-dmo.org/file/xooyAv1iQBBPl0/metabolites_dissolved.csv",
+      "scheme": "https",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "hash": "sha256:27b113b2f0537c97e489917c4573d00e317b456fc1f4703b03af2d0f976c214e",
+      "bytes": 9459,
+      "fields": 39,
+      "rows": 39,
+      "schema": {
+        "fields": [
+          {
+            "name": "cast",
+            "type": "integer"
+          },
+          {
+            "name": "station",
+            "type": "integer"
+          },
+          {
+            "name": "date_start_utc",
+            "type": "integer"
+          },
+          {
+            "name": "time_start_utc",
+            "type": "integer"
+          },
+          {
+            "name": "ISO_DateTime_UTC",
+            "type": "datetime"
+          },
+          {
+            "name": "event_start",
+            "type": "string"
+          },
+          {
+            "name": "lat_start",
+            "type": "number"
+          },
+          {
+            "name": "lon_start",
+            "type": "number"
+          },
+          {
+            "name": "depth",
+            "type": "integer"
+          },
+          {
+            "name": "DHBA",
+            "type": "number"
+          },
+          {
+            "name": "MPA",
+            "type": "number"
+          },
+          {
+            "name": "PABA",
+            "type": "number"
+          },
+          {
+            "name": "PHBA",
+            "type": "number"
+          },
+          {
+            "name": "SAH",
+            "type": "number"
+          },
+          {
+            "name": "MTA",
+            "type": "number"
+          },
+          {
+            "name": "adenosine",
+            "type": "number"
+          },
+          {
+            "name": "biotin",
+            "type": "number"
+          },
+          {
+            "name": "caffeine",
+            "type": "number"
+          },
+          {
+            "name": "chitotriose",
+            "type": "number"
+          },
+          {
+            "name": "vitamin_B12",
+            "type": "number"
+          },
+          {
+            "name": "PGA",
+            "type": "number"
+          },
+          {
+            "name": "desthiobiotin",
+            "type": "number"
+          },
+          {
+            "name": "folic_acid",
+            "type": "number"
+          },
+          {
+            "name": "glyphosate",
+            "type": "number"
+          },
+          {
+            "name": "IAA",
+            "type": "number"
+          },
+          {
+            "name": "inosine",
+            "type": "number"
+          },
+          {
+            "name": "glutathione",
+            "type": "number"
+          },
+          {
+            "name": "leucine",
+            "type": "number"
+          },
+          {
+            "name": "Ac_Glu_OH",
+            "type": "number"
+          },
+          {
+            "name": "NAD",
+            "type": "number"
+          },
+          {
+            "name": "NADP",
+            "type": "number"
+          },
+          {
+            "name": "pantothenic_acid",
+            "type": "number"
+          },
+          {
+            "name": "phenylalanine",
+            "type": "number"
+          },
+          {
+            "name": "pyridoxine",
+            "type": "number"
+          },
+          {
+            "name": "riboflavin",
+            "type": "number"
+          },
+          {
+            "name": "taurocholate",
+            "type": "number"
+          },
+          {
+            "name": "thiamine",
+            "type": "number"
+          },
+          {
+            "name": "thymidine",
+            "type": "number"
+          },
+          {
+            "name": "tryptophan",
+            "type": "number"
+          }
+        ]
+      },
+      "bcodmo:parameters": [
+        {
+          "bcodmo:name": "cast",
+          "bcodmo:description": "cast number",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "station",
+          "bcodmo:description": "station identifier",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "date_start_utc",
+          "bcodmo:description": "date (UTC) in format yyyymmdd",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "time_start_utc",
+          "bcodmo:description": "time (UTC) in format HHMM",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "ISO_DateTime_UTC",
+          "bcodmo:description": "ISO timestamp based on the ISO 8601:2004(E) standard in format YYYY-mm-ddTHH:MM:SS[.xx]Z (UTC)",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "event_start",
+          "bcodmo:description": "The event number from the ELOG maintained during the cruise.",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "lat_start",
+          "bcodmo:description": "<p>Latitude at the time the event started (from the cruise event log)</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "lon_start",
+          "bcodmo:description": "<p>Longitude at the time the event started (from the cruise event log); west is negative</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "depth",
+          "bcodmo:description": "<p>Sample depth from CTD. (Orignally called depSM)</p>",
+          "bcodmo:units": "meters (m)"
+        },
+        {
+          "bcodmo:name": "DHBA",
+          "bcodmo:description": "2,3-dihydroxybenzoic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "MPA",
+          "bcodmo:description": "3-mercaptopropionate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "PABA",
+          "bcodmo:description": "4-aminobenzoic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "PHBA",
+          "bcodmo:description": "4-hydroxybenzoic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "SAH",
+          "bcodmo:description": "S-(5'-adenosyl)-L-homocysteine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "MTA",
+          "bcodmo:description": "5-methylthioadenosine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "adenosine",
+          "bcodmo:description": "adenosine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "biotin",
+          "bcodmo:description": "biotin concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "caffeine",
+          "bcodmo:description": "caffeine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "chitotriose",
+          "bcodmo:description": "chitotriose concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "vitamin_B12",
+          "bcodmo:description": "cyanocobalamin concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "PGA",
+          "bcodmo:description": "D-(-)3-phosphoglyceric acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "desthiobiotin",
+          "bcodmo:description": "desthiobiotin concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "folic_acid",
+          "bcodmo:description": "folic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "glyphosate",
+          "bcodmo:description": "glyphosate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "IAA",
+          "bcodmo:description": "indole 3-acetic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "inosine",
+          "bcodmo:description": "inosine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "glutathione",
+          "bcodmo:description": "glutathione concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "leucine",
+          "bcodmo:description": "<p>leucine concentration</p>",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "Ac_Glu_OH",
+          "bcodmo:description": "N-acetylglutamic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "NAD",
+          "bcodmo:description": "NAD concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "NADP",
+          "bcodmo:description": "NADP concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "pantothenic_acid",
+          "bcodmo:description": "pantothenic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "phenylalanine",
+          "bcodmo:description": "phenylalanine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "pyridoxine",
+          "bcodmo:description": "pyridoxine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "riboflavin",
+          "bcodmo:description": "riboflavin concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "taurocholate",
+          "bcodmo:description": "taurocholate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "thiamine",
+          "bcodmo:description": "thiamine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "thymidine",
+          "bcodmo:description": "thymidine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "tryptophan",
+          "bcodmo:description": "tryptophan concentration",
+          "bcodmo:units": "picomolar (pM)"
+        }
+      ]
+    },
+    {
+      "name": "metabolites_particulate",
+      "type": "table",
+      "sources": [
+        {
+          "path": "http://lod.bco-dmo.org/id/dataset/700038",
+          "title": "Targeted particulate metabolite abundances from R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados from March to May 2013 (Deep Atlantic DOM project)",
+          "doi": null
+        }
+      ],
+      "path": "https://datadocs.bco-dmo.org/file/zqqADKXcmJGmZG/metabolites_particulate.csv",
+      "scheme": "https",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "hash": "sha256:2f793ed34e7d335fb5e9c7a8b484767132c3fdae8aae822f12d284db912196de",
+      "bytes": 43185,
+      "fields": 69,
+      "rows": 108,
+      "schema": {
+        "fields": [
+          {
+            "name": "cast",
+            "type": "integer"
+          },
+          {
+            "name": "station",
+            "type": "integer"
+          },
+          {
+            "name": "date_start_utc",
+            "type": "integer"
+          },
+          {
+            "name": "time_start_utc",
+            "type": "integer"
+          },
+          {
+            "name": "ISO_DateTime_UTC",
+            "type": "datetime"
+          },
+          {
+            "name": "event_start",
+            "type": "string"
+          },
+          {
+            "name": "lat_start",
+            "type": "number"
+          },
+          {
+            "name": "lon_start",
+            "type": "number"
+          },
+          {
+            "name": "depth",
+            "type": "integer"
+          },
+          {
+            "name": "filter_type",
+            "type": "string"
+          },
+          {
+            "name": "DOXP",
+            "type": "number"
+          },
+          {
+            "name": "DHBA",
+            "type": "number"
+          },
+          {
+            "name": "DHPS",
+            "type": "number"
+          },
+          {
+            "name": "MPA",
+            "type": "number"
+          },
+          {
+            "name": "PABA",
+            "type": "number"
+          },
+          {
+            "name": "PHBA",
+            "type": "number"
+          },
+          {
+            "name": "AdoHcy",
+            "type": "number"
+          },
+          {
+            "name": "MTA",
+            "type": "number"
+          },
+          {
+            "name": "adenine",
+            "type": "number"
+          },
+          {
+            "name": "adenosine",
+            "type": "number"
+          },
+          {
+            "name": "AMP",
+            "type": "number"
+          },
+          {
+            "name": "arginine",
+            "type": "number"
+          },
+          {
+            "name": "aspartic_acid",
+            "type": "number"
+          },
+          {
+            "name": "betaine",
+            "type": "number"
+          },
+          {
+            "name": "biotin",
+            "type": "number"
+          },
+          {
+            "name": "caffeine",
+            "type": "number"
+          },
+          {
+            "name": "chitobiose",
+            "type": "number"
+          },
+          {
+            "name": "ciliatine",
+            "type": "number"
+          },
+          {
+            "name": "citrulline",
+            "type": "number"
+          },
+          {
+            "name": "vitamin_B12",
+            "type": "number"
+          },
+          {
+            "name": "cytosine",
+            "type": "number"
+          },
+          {
+            "name": "desthiobiotin",
+            "type": "number"
+          },
+          {
+            "name": "GlcN_6_P",
+            "type": "number"
+          },
+          {
+            "name": "DHAP",
+            "type": "number"
+          },
+          {
+            "name": "DMSP",
+            "type": "number"
+          },
+          {
+            "name": "R5P",
+            "type": "number"
+          },
+          {
+            "name": "folic_acid",
+            "type": "number"
+          },
+          {
+            "name": "fosfomycin",
+            "type": "number"
+          },
+          {
+            "name": "fumaric_acid",
+            "type": "number"
+          },
+          {
+            "name": "G6P",
+            "type": "number"
+          },
+          {
+            "name": "glutamic_acid",
+            "type": "number"
+          },
+          {
+            "name": "glutamine",
+            "type": "number"
+          },
+          {
+            "name": "glyphosate",
+            "type": "number"
+          },
+          {
+            "name": "guanine",
+            "type": "number"
+          },
+          {
+            "name": "IAA",
+            "type": "number"
+          },
+          {
+            "name": "IMP",
+            "type": "number"
+          },
+          {
+            "name": "inosine",
+            "type": "number"
+          },
+          {
+            "name": "cysteine",
+            "type": "number"
+          },
+          {
+            "name": "glutathione",
+            "type": "number"
+          },
+          {
+            "name": "leucine",
+            "type": "number"
+          },
+          {
+            "name": "methionine",
+            "type": "number"
+          },
+          {
+            "name": "GlcNAc",
+            "type": "number"
+          },
+          {
+            "name": "Ac_Glu_OH",
+            "type": "number"
+          },
+          {
+            "name": "ornithine",
+            "type": "number"
+          },
+          {
+            "name": "orotic_acid",
+            "type": "number"
+          },
+          {
+            "name": "pantothenic_acid",
+            "type": "number"
+          },
+          {
+            "name": "phenylalanine",
+            "type": "number"
+          },
+          {
+            "name": "proline",
+            "type": "number"
+          },
+          {
+            "name": "pyridoxine",
+            "type": "number"
+          },
+          {
+            "name": "riboflavin",
+            "type": "number"
+          },
+          {
+            "name": "sarcosine",
+            "type": "number"
+          },
+          {
+            "name": "GPAT",
+            "type": "number"
+          },
+          {
+            "name": "taurine",
+            "type": "number"
+          },
+          {
+            "name": "threonine",
+            "type": "number"
+          },
+          {
+            "name": "thymidine",
+            "type": "number"
+          },
+          {
+            "name": "tryptophan",
+            "type": "number"
+          },
+          {
+            "name": "uracil",
+            "type": "number"
+          },
+          {
+            "name": "UMP",
+            "type": "number"
+          },
+          {
+            "name": "xanthine",
+            "type": "number"
+          }
+        ]
+      },
+      "bcodmo:parameters": [
+        {
+          "bcodmo:name": "cast",
+          "bcodmo:description": "cast number",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "station",
+          "bcodmo:description": "station identifier",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "date_start_utc",
+          "bcodmo:description": "date (UTC) in format yyyymmdd",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "time_start_utc",
+          "bcodmo:description": "time (UTC) in format HHMM",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "ISO_DateTime_UTC",
+          "bcodmo:description": "ISO timestamp based on the ISO 8601:2004(E) standard in format YYYY-mm-ddTHH:MM:SS[.xx]Z (UTC)",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "event_start",
+          "bcodmo:description": "The event number from the ELOG maintained during the cruise.",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "lat_start",
+          "bcodmo:description": "<p>Latitude at the time the event started (from the cruise event log)</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "lon_start",
+          "bcodmo:description": "<p>Longitude at the time the event started (from the cruise event log); west is negative</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "depth",
+          "bcodmo:description": "<p>Depth from CTD. (Orignally called depSM)</p>",
+          "bcodmo:units": "meters (m)"
+        },
+        {
+          "bcodmo:name": "filter_type",
+          "bcodmo:description": "filter type",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "DOXP",
+          "bcodmo:description": "1-deoxy-D-xylulose-5-phosphate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "DHBA",
+          "bcodmo:description": "2,3-dihydroxybenzoic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "DHPS",
+          "bcodmo:description": "2,3-dihydroxypropane-1-sulfonate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "MPA",
+          "bcodmo:description": "3-mercaptopropionate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "PABA",
+          "bcodmo:description": "4-aminobenzoic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "PHBA",
+          "bcodmo:description": "4-hydroxybenzoic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "AdoHcy",
+          "bcodmo:description": "S-(5'-adenosyl)-L-homocysteine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "MTA",
+          "bcodmo:description": "5-methylthioadenosine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "adenine",
+          "bcodmo:description": "adenine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "adenosine",
+          "bcodmo:description": "adenosine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "AMP",
+          "bcodmo:description": "adenosine 5'-monophosphate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "arginine",
+          "bcodmo:description": "arginine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "aspartic_acid",
+          "bcodmo:description": "aspartic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "betaine",
+          "bcodmo:description": "betaine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "biotin",
+          "bcodmo:description": "biotin concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "caffeine",
+          "bcodmo:description": "caffeine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "chitobiose",
+          "bcodmo:description": "chitobiose concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "ciliatine",
+          "bcodmo:description": "ciliatine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "citrulline",
+          "bcodmo:description": "citrulline concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "vitamin_B12",
+          "bcodmo:description": "cyanocobalamin concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "cytosine",
+          "bcodmo:description": "cytosine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "desthiobiotin",
+          "bcodmo:description": "desthiobiotin concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "GlcN_6_P",
+          "bcodmo:description": "D-glucosamine 6-phosphate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "DHAP",
+          "bcodmo:description": "dihydroxyacetone phosphate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "DMSP",
+          "bcodmo:description": "DMSP concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "R5P",
+          "bcodmo:description": "D-ribose 5-phosphate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "folic_acid",
+          "bcodmo:description": "folic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "fosfomycin",
+          "bcodmo:description": "fosfomycin concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "fumaric_acid",
+          "bcodmo:description": "fumaric acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "G6P",
+          "bcodmo:description": "glucose 6-phosphate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "glutamic_acid",
+          "bcodmo:description": "glutamic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "glutamine",
+          "bcodmo:description": "glutamine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "glyphosate",
+          "bcodmo:description": "glyphosate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "guanine",
+          "bcodmo:description": "guanine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "IAA",
+          "bcodmo:description": "indole 3-acetic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "IMP",
+          "bcodmo:description": "inosine 5'-monophosphate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "inosine",
+          "bcodmo:description": "inosine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "cysteine",
+          "bcodmo:description": "cysteine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "glutathione",
+          "bcodmo:description": "glutathione concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "leucine",
+          "bcodmo:description": "leucine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "methionine",
+          "bcodmo:description": "methionine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "GlcNAc",
+          "bcodmo:description": "N-acetylglucosamine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "Ac_Glu_OH",
+          "bcodmo:description": "N-acetylglutamic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "ornithine",
+          "bcodmo:description": "ornithine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "orotic_acid",
+          "bcodmo:description": "orotic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "pantothenic_acid",
+          "bcodmo:description": "pantothenic acid concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "phenylalanine",
+          "bcodmo:description": "phenylalanine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "proline",
+          "bcodmo:description": "proline concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "pyridoxine",
+          "bcodmo:description": "pyridoxine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "riboflavin",
+          "bcodmo:description": "riboflavin concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "sarcosine",
+          "bcodmo:description": "sarcosine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "GPAT",
+          "bcodmo:description": "sn-glycerol 3-phosphate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "taurine",
+          "bcodmo:description": "taurine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "threonine",
+          "bcodmo:description": "threonine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "thymidine",
+          "bcodmo:description": "thymidine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "tryptophan",
+          "bcodmo:description": "tryptophan concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "uracil",
+          "bcodmo:description": "uracil concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "UMP",
+          "bcodmo:description": "uridine 5'-monophosphate concentration",
+          "bcodmo:units": "picomolar (pM)"
+        },
+        {
+          "bcodmo:name": "xanthine",
+          "bcodmo:description": "xanthine concentration",
+          "bcodmo:units": "picomolar (pM)"
+        }
+      ]
+    },
+    {
+      "name": "tos",
+      "type": "table",
+      "sources": [
+        {
+          "path": "http://lod.bco-dmo.org/id/dataset/745536",
+          "title": "Total organic sulfur (TOS) collected from Niskin bottle samples on R/V Knorr cruise KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados from March to May 2013 (Deep Atlantic DOM project)",
+          "doi": "10.1575/1912/bco-dmo.745536.1"
+        }
+      ],
+      "path": "https://datadocs.bco-dmo.org/file/933jogAUkzzB7L/TOS.csv",
+      "scheme": "https",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "hash": "sha256:622df4e1314fe6500f6e79104ac3cb5aa769568a42fbf73937765d370ffb8bcd",
+      "bytes": 2568,
+      "fields": 10,
+      "rows": 28,
+      "schema": {
+        "fields": [
+          {
+            "name": "cast",
+            "type": "integer"
+          },
+          {
+            "name": "station",
+            "type": "integer"
+          },
+          {
+            "name": "date_utc_YYYYMMDD_start",
+            "type": "integer"
+          },
+          {
+            "name": "time_utc_HHMM_start",
+            "type": "integer"
+          },
+          {
+            "name": "event_start",
+            "type": "string"
+          },
+          {
+            "name": "depth_m",
+            "type": "number"
+          },
+          {
+            "name": "lat_start",
+            "type": "number"
+          },
+          {
+            "name": "lon_start",
+            "type": "number"
+          },
+          {
+            "name": "TOS_nM",
+            "type": "number"
+          },
+          {
+            "name": "TOS_sd",
+            "type": "number"
+          }
+        ]
+      },
+      "bcodmo:parameters": [
+        {
+          "bcodmo:name": "cast",
+          "bcodmo:description": "cast number",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "station",
+          "bcodmo:description": "station number",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "date_utc_YYYYMMDD_start",
+          "bcodmo:description": "date, UTC, given as year – month – day",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "time_utc_HHMM_start",
+          "bcodmo:description": "time, UTC, given as hour – minute",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "event_start",
+          "bcodmo:description": "the event number from the ELOG maintained during the cruise",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "depth_m",
+          "bcodmo:description": "<p>depth in meters</p>",
+          "bcodmo:units": "meter (m)"
+        },
+        {
+          "bcodmo:name": "lat_start",
+          "bcodmo:description": "<p>latitude</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "lon_start",
+          "bcodmo:description": "<p>longitude</p>",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "TOS_nM",
+          "bcodmo:description": "total organic sulfur, in nM",
+          "bcodmo:units": "nanomolar (nM)"
+        },
+        {
+          "bcodmo:name": "TOS_sd",
+          "bcodmo:description": "standard deviation for total organic sulfur, from averages of replicates where available",
+          "bcodmo:units": "nanomolar (nM)"
+        }
+      ]
+    },
+    {
+      "name": "deepdom_sample_metadata_for_opp",
+      "type": "table",
+      "sources": [
+        {
+          "path": "http://lod.bco-dmo.org/id/dataset/875622",
+          "title": "Sample information for metaproteomic samples taken from Station 2 from R/V Knorr KN210-04 in the Western Atlantic Ocean between Uruguay and Barbados from March 2013",
+          "doi": null
+        }
+      ],
+      "path": "https://datadocs.bco-dmo.org/file/8XAyqRnUXokw2Z/deepdom_sample_metadata_for_opp.csv",
+      "scheme": "https",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "hash": "sha256:09616a93e8cab4ec6445f323580decfbbe75c84ceaf31db06b20651685ffaf48",
+      "bytes": 2894,
+      "fields": 13,
+      "rows": 20,
+      "schema": {
+        "fields": [
+          {
+            "name": "sample_id",
+            "type": "string"
+          },
+          {
+            "name": "ms_ms_sample_name",
+            "type": "string"
+          },
+          {
+            "name": "station_id",
+            "type": "string"
+          },
+          {
+            "name": "depth_m",
+            "type": "integer"
+          },
+          {
+            "name": "latitude_dd",
+            "type": "integer"
+          },
+          {
+            "name": "longitude_dd",
+            "type": "integer"
+          },
+          {
+            "name": "date_ISO",
+            "type": "date"
+          },
+          {
+            "name": "time_h_m_s",
+            "type": "time"
+          },
+          {
+            "name": "minimum_filter_size_microns",
+            "type": "number"
+          },
+          {
+            "name": "maximum_filter_size_microns",
+            "type": "number"
+          },
+          {
+            "name": "cruise_id",
+            "type": "string"
+          },
+          {
+            "name": "event_number",
+            "type": "string"
+          },
+          {
+            "name": "ISO_DateTime_UTC",
+            "type": "datetime"
+          }
+        ]
+      },
+      "bcodmo:parameters": [
+        {
+          "bcodmo:name": "sample_id",
+          "bcodmo:description": "sample identifier",
+          "bcodmo:datatype": "string",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "ms_ms_sample_name",
+          "bcodmo:description": "<p>additional sample identifier that includes date of analysis run, method (2D), total amount of protein injected, cruise name, station number, pump cast number, filter type, and sample depth</p>",
+          "bcodmo:datatype": "string",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "station_id",
+          "bcodmo:description": "station identifier",
+          "bcodmo:datatype": "string",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "depth_m",
+          "bcodmo:description": "<p>Sample depth</p>",
+          "bcodmo:datatype": "integer",
+          "bcodmo:units": "meters"
+        },
+        {
+          "bcodmo:name": "latitude_dd",
+          "bcodmo:description": "<p>latitude of sampling location with positive values indicating North</p>",
+          "bcodmo:datatype": "integer",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "longitude_dd",
+          "bcodmo:description": "<p>longitude of sampling location with positive values indicating West</p>",
+          "bcodmo:datatype": "integer",
+          "bcodmo:units": "decimal degrees"
+        },
+        {
+          "bcodmo:name": "date_ISO",
+          "bcodmo:description": "<p>date of sample collection in ISO format</p>",
+          "bcodmo:datatype": "date",
+          "bcodmo:units": "unitless",
+          "bcodmo:valueFormat": "%Y-%m-%d"
+        },
+        {
+          "bcodmo:name": "time_h_m_s",
+          "bcodmo:description": "time of sample collection",
+          "bcodmo:datatype": "string",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "minimum_filter_size_microns",
+          "bcodmo:description": "minimum filter sized used reported in microns",
+          "bcodmo:datatype": "number",
+          "bcodmo:units": "microns"
+        },
+        {
+          "bcodmo:name": "maximum_filter_size_microns",
+          "bcodmo:description": "maximum filter sized used reported in microns",
+          "bcodmo:datatype": "number",
+          "bcodmo:units": "microns"
+        },
+        {
+          "bcodmo:name": "cruise_id",
+          "bcodmo:description": "cruise identifier",
+          "bcodmo:datatype": "string",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "event_number",
+          "bcodmo:description": "<p>event identification number which includes sampling date in year-month-day format. This ID corresponds to&nbsp;the DeepDOM event log 'event' parameter.&nbsp;</p>",
+          "bcodmo:datatype": "string",
+          "bcodmo:units": "unitless"
+        },
+        {
+          "bcodmo:name": "ISO_DateTime_UTC",
+          "bcodmo:description": "<p>&nbsp;ISO standardized time and date of sampling.</p>",
+          "bcodmo:datatype": "datetime",
+          "bcodmo:units": "unitless",
+          "bcodmo:valueFormat": "%Y-%m-%dT%H:%M"
+        }
+      ]
+    }
+  ]
+}
