@@ -1,11 +1,10 @@
-# Krista Longnecker, 13 July 2025
-# Run this after running getBCODMOinfo.ipynb
-# This script will convert the BCO-DMO json file into the format required by CMAP
-# Work on the input for one file, with the end result as one Excel file; will only end up here if the data 
-# file is a CSV file
-# This script works on the discrete data file (the first one I wrote)
+"""
+Krista Longnecker, 21 July 2025
+Run this after running getBCODMOinfo.ipynb
+This script will convert the BCO-DMO json file into the format required by CMAP, and works on one file at a time.
 
-#some of these are residual from assembling the data file, keep for now.
+"""
+
 import pandas as pd
 import requests
 import os
@@ -32,6 +31,7 @@ def getDetails(md,bcodmo_name):
 
 #set up a function to remove <p> and </p> from the beginning and end, occurs multiple times
 def clean(a):
+    """Some of the descriptions have added markers, remove them using this function"""
     if a.startswith('<p>'):
         toStrip = '[</p><p>]'
         clean = re.sub(toStrip,'',a)
@@ -47,7 +47,6 @@ def main():
     Go through the steps needed to go from BCO-DMO details in json file and end with output that is an Excel file
     '''
     idx_json = int(sys.argv[1])
-    #idx_json = 1
     
     biosscope = Package('datapackage.json')
     data_url = biosscope.resources[idx_json].path
@@ -63,10 +62,9 @@ def main():
     df = pd.DataFrame(columns=['time','lat','lon','depth'])
     
     # time --> CMAP requirement is this: #< Format  %Y-%m-%dT%H:%M:%S,  Time-Zone:  UTC,  example: 2014-02-28T14:25:55 >
-    # Do this in two steps so I can check the output more easily
     temp = bcodmo.copy()
 
-    #In the TOS data, time is labeled differently from other datasets :( 
+    #In the TOS data, multiple variables have different labels :( 
     if exportFile == 'TOS':
         useDate = 'date_utc_YYYYMMDD_start'
         useTime = 'time_utc_HHMM_start'
@@ -80,7 +78,7 @@ def main():
     temp['date_cmap'] = temp['date'].dt.strftime("%Y-%m-%dT%H:%M:%S")
     df['time'] = temp['date_cmap']
     
-    # lat (-90 to 90) and lon (-180 to 180); use variable names at BCO-DMO
+    # lat (-90 to 90) and lon (-180 to 180); 
     df['lat'] = bcodmo['lat_start']
     df['lon'] = bcodmo['lon_start']  #BCO-DMO already has this as negative
     df['depth'] = bcodmo[useDepth]
@@ -89,7 +87,7 @@ def main():
     #remember: bcodmo_trim will have the list of variables that I will use later to get metadata about the variables
     bcodmo_trim = bcodmo.drop(columns=['lat_start', 'lon_start', useDepth])
     nVariables = bcodmo_trim.shape[1] #remember in Python indexing starts with 0 (rows, 1 is the columns)
-    # and then add to the datafile I am assembling (essentially re-order columns
+    # and then add to the datafile I am assembling
     df = pd.concat([df, bcodmo_trim], axis=1)
        
     # work on the second sheet: metadata about the variables; use the CMAP dataset template to setup the dataframe so I get the column headers right
@@ -102,8 +100,6 @@ def main():
     
     #the variables I need to search for are here: bcodmo_trim.columns, put them in the first column
     df2['var_short_name'] = bcodmo_trim.columns
-    #Need the information from BCO-DMO to fill in the metadata about the variables.
-    #md = biosscope.resources[idx].custom['bcodmo:parameters'] #this is a list, don't forget 'custom' (!!)
         
     #there is most certainly a better way to do this, but I understand this option
     for idx,item in enumerate(df2.iterrows()):
@@ -115,9 +111,6 @@ def main():
                  'Shimadzu TOC-V':['NPOC','TN']
                     }
     
-    #setup the column so Python does not make a column for floats
-    df['var_sensor'] = ""
-    
     # this will return the sensor given a possible variable, surely there is a better way to do this...
     for idx,item in enumerate(df2.iterrows()):
         oneVar = df2.loc[idx,'var_short_name']
@@ -125,30 +118,39 @@ def main():
         if len(sensor): #only try and fill in if a sensor was found
             df2.loc[idx,'var_sensor'] = str(sensor)
             
+    #these two are easy: just add them here
+    df2.loc[:,('var_spatial_res')] = 'irregular'
+    df2.loc[:, ('var_temporal_res')] = 'irregular'
+
     #there are a few pieces of metadata that CMAP wants that will be easier to track in an Excel file. Right now this means I run through 
-    # this twice. Annoying, but haven't figured out a better way (yet).
-    #The keywords include cruises, and all possible names for a variable.
+    # this twice. Annoying, but haven't figured out a better way (yet). The keywords include cruises, and all possible names for a variable.
     fName = 'CMAP_variableMetadata_additions.xlsx'
     sheetName = exportFile[0:31] #Excel limits the length of the sheet name
     moreMD = pd.read_excel(fName,sheet_name = sheetName)
-    
-    #suffixes are added to column name to keep them separate; '' adds nothing while '_td' adds _td that can get deleted next
-    df2 = moreMD.merge(df2[['var_short_name','var_long_name','var_sensor','var_unit']],on='var_short_name',how='left',suffixes=('_td', '',))
-    
-    # Discard the columns that acquired a suffix:
-    df2 = df2[[c for c in df2.columns if not c.endswith('_td')]]
-    
-    df2 = df2.loc[:,metaVarColumns]
+
+    #if moreMD is empty add the details to the CMAP_variableMetdata_additions.xlsx file so I can fill in the information
+    if len(moreMD)==0:
+        with pd.ExcelWriter(fName, engine='openpyxl', mode='a',if_sheet_exists = 'replace') as writer:  
+            df2.to_excel(writer, sheet_name=sheetName,index = False)
+    else:  
+        #otherwise merge the information from moreMD into df2
+        #suffixes are added to column name to keep them separate; '' adds nothing while '_td' adds _td that can get deleted next
+        df2 = moreMD.merge(df2[['var_short_name','var_long_name','var_sensor','var_unit']],on='var_short_name',how='left',suffixes=('_td', '',))
+        
+        # Discard the columns that acquired a suffix:
+        df2 = df2[[c for c in df2.columns if not c.endswith('_td')]]
+        #reorder the result to match the expected order        
+        df2 = df2.loc[:,metaVarColumns]
+        
     #these two are easy: just add them here
     df2.loc[:,('var_spatial_res')] = 'irregular'
     df2.loc[:, ('var_temporal_res')] = 'irregular'
     
     #metadata about the project    
-    #stuck some variables in the Excel file and can pull them from here
+    #use variables for each datatset provided in the Excel file:
     varProject = pd.read_excel(fName,sheet_name = 'project')
     one = varProject.loc[varProject['name'] == sheetName]
-    # finally gather up the dataset_meta_data: for now I just wrote the information here, I might setup in a separate text file later
-    #pdb.set_trace()
+    # finally gather up the dataset_meta_data 
     df3 = pd.DataFrame({
         'dataset_short_name': ['DeepDOM_v1'],
         'dataset_long_name': ['DeepDOM ' + exportFile],
@@ -172,7 +174,7 @@ def main():
     os.chdir(".")
     
     if os.path.isdir(folder):
-        print("Data will go here: %s" % (os.getcwd()) + '\\' + folder + '\\' + exportFile)
+        print("Data here: %s" % (os.getcwd()) + '\\' + folder + '\\' + exportFile)
     else:
         os.mkdir(folder)
     
