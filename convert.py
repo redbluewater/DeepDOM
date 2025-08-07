@@ -1,5 +1,6 @@
 """
 Krista Longnecker, 21 July 2025
+Updated 7 August 2025 to get time format right and add sensor information for everything
 Run this after running getBCODMOinfo.ipynb
 This script will convert the BCO-DMO json file into the format required by CMAP, and works on one file at a time.
 
@@ -75,7 +76,7 @@ def main():
         useDepth = 'depth'
         
     temp['date'] = pd.to_datetime(temp[useDate].apply(str) + ' ' + temp[useTime].apply(str).str.zfill(4), format="%Y%m%d %H%M")
-    temp['date_cmap'] = temp['date'].dt.strftime("%Y-%m-%dT%H:%M:%S")
+    temp['date_cmap'] = temp['date'].dt.strftime("%Y-%m-%dT%H:%M:%S" + "+00:00") #update to add 0 offset from UTC
     df['time'] = temp['date_cmap']
     
     # lat (-90 to 90) and lon (-180 to 180); 
@@ -107,16 +108,17 @@ def main():
         df2.loc[idx,'var_long_name'] = clean(a)
         df2.loc[idx,'var_unit'] = b
     
-    LUsensors = {'Alpkem RFA300':['NO3_NO2','silicate','NO2','PO4','NH4'],
-                 'Shimadzu TOC-V':['NPOC','TN']
-                    }
+#use Excel file to get var_sensor. Need to have an option for every data type
+#     LUsensors = {'Alpkem RFA300':['NO3_NO2','silicate','NO2','PO4','NH4'],
+#                  'Shimadzu TOC-V':['NPOC','TN']
+#                     }
     
-    # this will return the sensor given a possible variable, surely there is a better way to do this...
-    for idx,item in enumerate(df2.iterrows()):
-        oneVar = df2.loc[idx,'var_short_name']
-        sensor =  str([k for k, v in LUsensors.items() if oneVar in v])[2:-2]
-        if len(sensor): #only try and fill in if a sensor was found
-            df2.loc[idx,'var_sensor'] = str(sensor)
+#     # this will return the sensor given a possible variable, surely there is a better way to do this...
+#     for idx,item in enumerate(df2.iterrows()):
+#         oneVar = df2.loc[idx,'var_short_name']
+#         sensor =  str([k for k, v in LUsensors.items() if oneVar in v])[2:-2]
+#         if len(sensor): #only try and fill in if a sensor was found
+#             df2.loc[idx,'var_sensor'] = str(sensor)
             
     #these two are easy: just add them here
     df2.loc[:,('var_spatial_res')] = 'irregular'
@@ -135,7 +137,8 @@ def main():
     else:  
         #otherwise merge the information from moreMD into df2
         #suffixes are added to column name to keep them separate; '' adds nothing while '_td' adds _td that can get deleted next
-        df2 = moreMD.merge(df2[['var_short_name','var_long_name','var_sensor','var_unit']],on='var_short_name',how='left',suffixes=('_td', '',))
+        #update to remove var_sensor as that is now in the Excel file with the metadata details
+        df2 = moreMD.merge(df2[['var_short_name','var_long_name','var_unit']],on='var_short_name',how='left',suffixes=('_td', '',))
         
         # Discard the columns that acquired a suffix:
         df2 = df2[[c for c in df2.columns if not c.endswith('_td')]]
@@ -152,7 +155,7 @@ def main():
     one = varProject.loc[varProject['name'] == sheetName]
     # finally gather up the dataset_meta_data 
     df3 = pd.DataFrame({
-        'dataset_short_name': ['DeepDOM_v1'],
+        'dataset_short_name': ['DeepDOM_' + exportFile],
         'dataset_long_name': ['DeepDOM ' + exportFile],
         'dataset_version': ['1.0'],
         'dataset_release_date': [date.today()],
