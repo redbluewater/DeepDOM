@@ -3,6 +3,14 @@ Code to move DeepDOM data to CMAP\
 Krista Longnecker, Woods Hole Oceangraphic Institution
 
 Comments, newest at the top
+### 7 August 2025
+Fine tuning
+* changes to the time format to make it clear time is UTC (otherwise CMAP sends back error)
+* adding details about some of the data in var_sensors
+* Use CMAP approved var_discpline (primarily shift to Uncategorized for metadata, and Physics)
+
+Submitting files to CMAP as I go.
+  
 ### 21 July 2025
 This code is set to (1) go to BCO-DMO and pull the DeepDOM files into a json file (using ```getBCODMOinfo.ipynb```, link [here](https://github.com/redbluewater/DeepDOM/blob/main/getBCODMOinfo.ipynb)) and then convert the files into Excel files in the format required by CMAP (using ```convertBCODMOtoCMAP_v2.ipynb```, link [here](https://github.com/redbluewater/DeepDOM/blob/main/convertBCODMOtoCMAP_v2.ipynb)).
 
