@@ -12,7 +12,7 @@ Fine tuning
 Submitting files to CMAP as I go.
   
 ### 21 July 2025
-This code is set to (1) go to BCO-DMO and pull the DeepDOM files into a json file (using ```getBCODMOinfo.ipynb```, link [here](https://github.com/redbluewater/DeepDOM/blob/main/getBCODMOinfo.ipynb)) and then convert the files into Excel files in the format required by CMAP (using ```convertBCODMOtoCMAP_v2.ipynb```, link [here](https://github.com/redbluewater/DeepDOM/blob/main/convertBCODMOtoCMAP_v2.ipynb)).
+This repository has code that first goes to BCO-DMO and pulls the DeepDOM files into a json file (using ```getBCODMOinfo.ipynb```, link [here](https://github.com/redbluewater/DeepDOM/blob/main/getBCODMOinfo.ipynb)). Then I convert the files into Excel files in the format required by CMAP (using ```convertBCODMOtoCMAP_v2.ipynb```, link [here](https://github.com/redbluewater/DeepDOM/blob/main/convertBCODMOtoCMAP_v2.ipynb)).
 
 Some notes:\
 You will have to run through ```convertBCODMOtoCMAP_v2.ipynb``` twice as I have not found an easy way to automate adding the metadata about the variables. This requires some fussing around in something like the following order:
