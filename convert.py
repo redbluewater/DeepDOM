@@ -24,7 +24,6 @@ def getDetails(md,bcodmo_name):
     """
     for i, item in enumerate(md):
         if item['bcodmo:name'] == bcodmo_name:
-            #actually want the descrption, so return that
             description = item['bcodmo:description']
             units = item['bcodmo:units']
 
@@ -58,13 +57,11 @@ def main():
     
     #super easy to work with the CSV file once I have the URL
     bcodmo = pd.read_csv(data_url,na_values = ['nd']) #now I have NaN...but they get dropped when writing the file
+    temp = bcodmo.copy()
     
     # Required variables are time, lat, lon, depth
     df = pd.DataFrame(columns=['time','lat','lon','depth'])
     
-    # time --> CMAP requirement is this: #< Format  %Y-%m-%dT%H:%M:%S,  Time-Zone:  UTC,  example: 2014-02-28T14:25:55 >
-    temp = bcodmo.copy()
-
     #In the TOS data, multiple variables have different labels :( 
     if exportFile == 'TOS':
         useDate = 'date_utc_YYYYMMDD_start'
@@ -85,13 +82,14 @@ def main():
     df['depth'] = bcodmo[useDepth]
     
     # all remaining columns in bcodmo can be considered data
-    #remember: bcodmo_trim will have the list of variables that I will use later to get metadata about the variables
+    #remember: bcodmo_trim has the list of variables that I will use later to get metadata about the variables
     bcodmo_trim = bcodmo.drop(columns=['lat_start', 'lon_start', useDepth])
     nVariables = bcodmo_trim.shape[1] #remember in Python indexing starts with 0 (rows, 1 is the columns)
     # and then add to the datafile I am assembling
     df = pd.concat([df, bcodmo_trim], axis=1)
        
-    # work on the second sheet: metadata about the variables; use the CMAP dataset template to setup the dataframe so I get the column headers right
+    # work on the second sheet: metadata about the variables; 
+    # use the CMAP dataset template to setup the dataframe so I get the column headers right
     templateName = 'datasetTemplate.xlsx'
     sheet_name = 'vars_meta_data'
     vars = pd.read_excel(templateName, sheet_name=sheet_name)
@@ -105,21 +103,13 @@ def main():
     #there is most certainly a better way to do this, but I understand this option
     for idx,item in enumerate(df2.iterrows()):
         a,b = getDetails(md,df2.loc[idx,'var_short_name']) #getDetails is the function I wrote (see above)
+        # var_unit has to be 50 characters or less...for now this only happens 1x, so manually edit
+        if b == 'microEinsteins per square meter per second (μE/m2-sec)':
+            b = 'microEinsteins per square meter per sec(μE/m2-sec)'
+   
         df2.loc[idx,'var_long_name'] = clean(a)
         df2.loc[idx,'var_unit'] = b
-    
-#use Excel file to get var_sensor. Need to have an option for every data type
-#     LUsensors = {'Alpkem RFA300':['NO3_NO2','silicate','NO2','PO4','NH4'],
-#                  'Shimadzu TOC-V':['NPOC','TN']
-#                     }
-    
-#     # this will return the sensor given a possible variable, surely there is a better way to do this...
-#     for idx,item in enumerate(df2.iterrows()):
-#         oneVar = df2.loc[idx,'var_short_name']
-#         sensor =  str([k for k, v in LUsensors.items() if oneVar in v])[2:-2]
-#         if len(sensor): #only try and fill in if a sensor was found
-#             df2.loc[idx,'var_sensor'] = str(sensor)
-            
+               
     #these two are easy: just add them here
     df2.loc[:,('var_spatial_res')] = 'irregular'
     df2.loc[:, ('var_temporal_res')] = 'irregular'
