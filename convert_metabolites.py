@@ -1,8 +1,10 @@
 """
 Krista Longnecker, 21 July 2025
 Updated 7 August 2025 to get time format right and add sensor information for everything
+Updated 16 August 2025 to get more metabolite names based on CHEBI numbers
 Run this after running getBCODMOinfo.ipynb
 This script will convert the BCO-DMO json file into the format required by CMAP, and works on one file at a time.
+This has the details needed for the metabolite data.
 
 """
 
@@ -15,6 +17,7 @@ import sys
 import pdb
 from datetime import date
 from frictionless import describe, Package
+from libchebipy._chebi_entity import ChebiEntity #this will get metabolite synonyms
 
 # Make a function that searches for bcodmo:name and returns bcodmo:description and bcodmo:units
 # input: md --> the list of parameters for one dataset
@@ -41,6 +44,19 @@ def clean(a):
         clean = a
     
     return clean
+
+
+def getSynonym(oneName):
+    '''
+        Define a function to use the the chebi tool to find synonyms. Krista Longnecker, 12 July 2025
+        input: oneName is a string with the CHEBI number (just the number, no prefix)
+    '''
+    possibles = ChebiEntity(oneName).get_names()
+    justNames = []
+    for idx in range(len(possibles)):
+        justNames.append(possibles[idx].get_name())
+
+    return justNames
 
 def main():
     '''
@@ -94,6 +110,7 @@ def main():
     sheet_name = 'vars_meta_data'
     vars = pd.read_excel(templateName, sheet_name=sheet_name)
     metaVarColumns = vars.columns.tolist()
+    
     #df2 will be the dataframe with the metadata about the variables, set it up empty here
     df2 = pd.DataFrame(columns=metaVarColumns,index = pd.RangeIndex(start=0,stop=nVariables)) #remember, Python is 0 indexed
     
@@ -114,6 +131,37 @@ def main():
     df2.loc[:,('var_spatial_res')] = 'irregular'
     df2.loc[:, ('var_temporal_res')] = 'irregular'
 
+    #misc_keywords will be added to all variables in the dataset
+    misc_keywords = 'KN210-04, DeepDOM, bio, biogeo, biogeochemistry, biology, Bottle, cruise, Discrete, in situ, insitu, in-situ, Western Atlantic Ocean, observation'
+    #then need to add the string with the names for each metabolite
+    #Have variable names that are not metabolites...if you encounter one of those, do not use CHEBI
+    toIgnore = {'time','lat','lon','depth','cast','station','date_start_utc','time_start_utc','ISO_DateTime_UTC','event_start','filter_type'}
+    
+    #made a lookup table with Winn's names and convert to CHEBI number (this was done manually, but only needs to happen once)
+    LUtable = 'data/DeepDOM_metabolitesLUtable.xlsx'
+    LU = pd.read_excel(LUtable,sheet_name = 'allMetabolites_sheet')
+    
+    #go through one metabolite at a time and make var_keywords
+    for idx,item in df2.iterrows():
+        oneVar = df2.loc[idx,'var_short_name'];
+        if oneVar in toIgnore:
+            df2.loc[idx,'var_keywords'] = misc_keywords
+        else:
+            try:
+                oneName = LU.loc[LU['WinnName']==oneVar,'CHEBI'].iloc[0]
+            except:
+                print('Error: you probably have a new variable name that is not in toIgnore')
+                pdb.set_trace()
+                    
+            try:
+                justNames = ', '.join(getSynonym(oneName.strip('CHEBI:')))
+            except:
+                print('Error: You are here if no CHEBI number was found for a metabolite')
+                pdb.set_trace()
+                
+            df2.loc[idx,'var_keywords'] = misc_keywords + ', ' + justNames
+            del justNames    
+
     #there are a few pieces of metadata that CMAP wants that will be easier to track in an Excel file. Right now this means I run through 
     # this twice. Annoying, but haven't figured out a better way (yet). The keywords include cruises, and all possible names for a variable.
     fName = 'CMAP_variableMetadata_additions.xlsx'
@@ -128,17 +176,13 @@ def main():
         #otherwise merge the information from moreMD into df2
         #suffixes are added to column name to keep them separate; '' adds nothing while '_td' adds _td that can get deleted next
         #update to remove var_sensor as that is now in the Excel file with the metadata details
-        df2 = moreMD.merge(df2[['var_short_name','var_long_name','var_unit']],on='var_short_name',how='left',suffixes=('_td', '',))
+        df2 = moreMD.merge(df2[['var_short_name','var_long_name','var_unit','var_keywords']],on='var_short_name',how='left',suffixes=('_td', '',))
         
         # Discard the columns that acquired a suffix:
         df2 = df2[[c for c in df2.columns if not c.endswith('_td')]]
         #reorder the result to match the expected order        
         df2 = df2.loc[:,metaVarColumns]
-        
-#     #these two are easy: just add them here
-#     df2.loc[:,('var_spatial_res')] = 'irregular'
-#     df2.loc[:, ('var_temporal_res')] = 'irregular'
-    
+           
     #metadata about the project    
     #use variables for each datatset provided in the Excel file:
     varProject = pd.read_excel(fName,sheet_name = 'project')
