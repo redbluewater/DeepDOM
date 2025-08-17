@@ -1,3 +1,4 @@
 #Keep data from getting uploaded to GitHub
 #Krista, 20 July 2025
 /data/
+/.ipynb_checkpoints/
