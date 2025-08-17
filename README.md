@@ -3,6 +3,9 @@ Code to move DeepDOM data to CMAP\
 Krista Longnecker, Woods Hole Oceangraphic Institution
 
 Comments, newest at the top
+### 17 August 2025
+Added code that allows me to go from Winn's metabolite names --> CHEBI number --> added synonyms for the metabolites.
+
 ### 7 August 2025
 Fine tuning
 * changes to the time format to make it clear time is UTC (otherwise CMAP sends back error)
